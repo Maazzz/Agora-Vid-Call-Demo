@@ -1,0 +1,41 @@
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="google-signin-client_id" content="70582980557-q57sqfa6lp9vepif2i99c9qlk3fgsd0q.apps.googleusercontent.com">
+  <title>Agora Video Call Demo</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.2/tailwind.min.css'>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+<body>
+  <div class="h-screen bg-gray-200 flex bg-agora justify-center items-center">
+    <div class="w-full max-w-xs bg-white flex flex-col py-5 px-8 shadow-2xl">
+      <div class="block m-auto bg-white"><img src="https://www.agora.io/en/wp-content/uploads/2019/06/agoralightblue-1.png" class="h-10"></div>
+      <label class="text-gray-700 font-bold py-2">Username</label>
+      <input id="username" class="text-gray-700 shadow border focus:outline-none focus:shadow-outline py-1 px-3 mb-3" type="text" placeholder="Username" required>
+      <label class="text-gray-700 font-bold py-2">Password</label>
+      <input id="password" class="text-gray-700 shadow border mb-3 py-1 px-3 focus:outline-none focus:shadow-outline py-1 px-3 mb-3" type="password" placeholder="********" required>
+      <div class="flex items-center my-4 block m-auto ">
+        <button id="submit_btn" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-8" onclick="window.location.href='channel.html'">
+          Sign In
+        </button>
+      </div>
+      <hr class="my-6 border-gray-300 w-full">
+      <div class="g-signin2 pl-16" data-onsuccess="onSignIn"></div>
+      <script>
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId());
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); 
+        updateName(profile.getName());
+        window.locaion.href='channel.html';
+      }
+      function updateName(name){
+              document.getElementById("username").value = name;
+      }
+      </script>
+    </div>
+  </div>
+</body>
+</html>
